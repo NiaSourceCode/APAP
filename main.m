@@ -138,8 +138,8 @@ scale = 1;    % Scale of input images (maybe for large images you would like to 
 %------------------
 % Images to stitch.
 %------------------
-path1 = '../025.jpg';
-path2 = '../026.jpg';
+path1 = '../boat1.jpg';
+path2 = '../boat2.jpg';
 
 %-------------
 % Read images.
