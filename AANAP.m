@@ -24,8 +24,10 @@ addpath('multigs');
 fast_stitch = 1;    
 img_n = 2;  % only support two image stitching
 in_name = cell(img_n,1);
-in_name{1} = 'images\images\P1010517.JPG';
-in_name{2} = 'images\images\P1010520.JPG';
+% in_name{1} = 'images\images\P1010517.JPG';
+% in_name{2} = 'images\images\P1010520.JPG';
+in_name{1} = '../025.jpg';
+in_name{2} = '../026.jpg';
 img_n = size(in_name, 1);
 
 gamma = 0;
