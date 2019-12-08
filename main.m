@@ -71,9 +71,15 @@ cd ../..;
 %---------------------------------------------
 % Check if we are already running in parallel.
 %---------------------------------------------
-poolsize = matlabpool('size');
-if poolsize == 0 %if not, we attempt to do it:
-    matlabpool open;
+% poolsize = matlabpool('size');
+% if poolsize == 0 %if not, we attempt to do it:
+%     matlabpool open;
+% end
+p = gcp('nocreate'); % If no pool, do not create new one.
+if isempty(p)
+    poolsize = 0;
+else
+    poolsize = p.NumWorkers
 end
 
 %-------------------------
