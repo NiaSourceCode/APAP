@@ -13,7 +13,8 @@
 
 close all
 
-run('vlfeat-0.9.14/toolbox/vl_setup');
+% TODO
+% run('vlfeat-0.9.14/toolbox/vl_setup');
 addpath('modelspecific');
 addpath('mexfiles');
 addpath('multigs');
@@ -21,13 +22,17 @@ addpath('multigs');
 %% Global options
 % 0 - Bilinear interpolation, implementation by MATLAB，slower but better
 % 1 - Nearest neighbor interpolation,implementation by C++, Faster but worse
-fast_stitch = 1;    
+fast_stitch = 0;    
 img_n = 2;  % only support two image stitching
 in_name = cell(img_n,1);
 % in_name{1} = 'images\images\P1010517.JPG';
 % in_name{2} = 'images\images\P1010520.JPG';
-in_name{1} = '../025.jpg';
-in_name{2} = '../026.jpg';
+% in_name{1} = '../pic1.png';
+% in_name{2} = '../pic2.png';
+example_dir = '../dataset/AANAP_1/';
+in_name{1} = [example_dir '01.jpg'];
+in_name{2} = [example_dir '02.jpg'];
+
 img_n = size(in_name, 1);
 
 gamma = 0;
