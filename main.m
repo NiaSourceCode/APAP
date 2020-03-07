@@ -64,9 +64,9 @@ cd ..;
 %----------------------
 % Setup VLFeat toolbox. TODO
 %----------------------
-% cd vlfeat-0.9.14/toolbox;
-% feval('vl_setup');
-% cd ../..;
+cd vlfeat-0.9.14/toolbox;
+feval('vl_setup');
+cd ../..;
 
 %---------------------------------------------
 % Check if we are already running in parallel.
@@ -138,9 +138,9 @@ scale = 1;    % Scale of input images (maybe for large images you would like to 
 %------------------
 % Images to stitch.
 %------------------
-example_dir = '../dataset/fcase_2/'
-path1 = [example_dir '01.jpg'];
-path2 = [example_dir '02.jpg'];
+example_dir = '../dataset/test/'
+path1 = [example_dir '1.jpg'];
+path2 = [example_dir '2.jpg'];
 
 %-------------
 % Read images.
