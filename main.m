@@ -62,11 +62,12 @@ end
 cd ..;
 
 %----------------------
-% Setup VLFeat toolbox. TODO
+% Setup VLFeat toolbox.
 %----------------------
-cd vlfeat-0.9.14/toolbox;
-feval('vl_setup');
-cd ../..;
+% cd vlfeat-0.9.14/toolbox;
+% feval('vl_setup');
+% cd ../..;
+run('vlfeat-0.9.14/toolbox/vl_setup');
 
 %---------------------------------------------
 % Check if we are already running in parallel.
@@ -138,7 +139,7 @@ scale = 1;    % Scale of input images (maybe for large images you would like to 
 %------------------
 % Images to stitch.
 %------------------
-example_dir = '../dataset/test/'
+example_dir = '../dataset/APAP-railtracks/'
 path1 = [example_dir '1.jpg'];
 path2 = [example_dir '2.jpg'];
 
@@ -163,6 +164,7 @@ fprintf('done (%fs)\n',toc);
 % end!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 % Normalise point distribution.
+% 归一化
 fprintf('  Normalising point distribution...');tic;
 data_orig = [ kp1(1:2,matches(1,:)) ; ones(1,size(matches,2)) ; kp2(1:2,matches(2,:)) ; ones(1,size(matches,2)) ];
 [ dat_norm_img1,T1 ] = normalise2dpts(data_orig(1:3,:));
@@ -214,7 +216,7 @@ fprintf('DLT (projective transform) on inliers\n');
 % Refine homography using DLT on inliers.
 fprintf('> Refining homography (H) using DLT...');tic;
 [ h,A,D1,D2 ] = feval(fitfn,data_norm(:,inliers));
-Hg = T2\(reshape(h,3,3)*T1);
+Hg = T2\(reshape(h,3,3)*T1); % denormalise 取消归一化
 fprintf('done (%fs)\n',toc);
 
 %----------------------------------------------------
@@ -287,6 +289,7 @@ parfor i=1:size(Mv,1)
     Gki = exp(-pdist2(Mv(i,:),Kp)./sigma^2);   
 
     % Capping/offsetting kernel
+    % 规格化操作
     Wi = max(gamma,Gki); 
     
     % This function receives W and A and obtains the least significant 

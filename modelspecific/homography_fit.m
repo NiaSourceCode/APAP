@@ -1,5 +1,6 @@
 function [P A C1 C2] = homography_fit(X,A,W,C1,C2)
 
+% 经过归一化的内点齐次坐标
 x1 = X(1:3,:);
 x2 = X(4:6,:);
 

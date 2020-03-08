@@ -46,6 +46,9 @@ function [H, A, C1, C2] = x(xs1,xs2,A,W,C1,C2)
             ooo p1'*p2(3) -p1'*p2(2)
            ];
         end
+
+        % TODO 测试A矩阵的大小
+        % disp(A);
         
         % Extract nullspace
         [u,s,v] = svd(A, 0); s = diag(s);
@@ -58,10 +61,12 @@ function [H, A, C1, C2] = x(xs1,xs2,A,W,C1,C2)
 
     h = v(:,9);
 
-    H = reshape(h,3,3)';
+    H = reshape(h,3,3)';% '表示转置
 
-    %decondition
+    % decondition
     H = C2\H*C1;
 
+    % disp(H);
     H = H/H(3,3);
+    % disp(H);
 end
