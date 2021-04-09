@@ -4,3 +4,5 @@
 
 - 主文件`main.m`
 - 在运行时报错请先将`main.m`中`Setup VLFeat toolbox`附近的语句注释/取消注释再运行一遍
+
+原项目官网:[https://cs.adelaide.edu.au/~tjchin/apap/](https://cs.adelaide.edu.au/~tjchin/apap/)
